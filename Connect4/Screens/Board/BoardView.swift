@@ -32,7 +32,7 @@ struct BoardView : View {
                                         animateChipDrop(column: column)
                                         viewModel.movements += 1
                                         
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                             viewModel.updateBoard(column: column)
                                             isChipHidden = true
                                             resetOffset()

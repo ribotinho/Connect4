@@ -15,65 +15,66 @@ struct GameView: View {
         
         ZStack{
             
-            if (viewModel.isBoardFull) {
+            if (viewModel.showAlert) {
+                AlertView(viewModel: viewModel)
+                    .zIndex(2)
+            }
+            
+            VStack {
                 
-                Text("full")
-            }else if (viewModel.isGameOver) {
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 150, height: 150)
+                    .padding(.bottom)
                 
-                Text("has won the game")
-            }else {
+                BoardView(viewModel: viewModel)
+                    .cornerRadius(10)
+                    .padding(.bottom)
                 
-                VStack {
-                    
-                    Image("logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 150, height: 150)
-                        .padding(.bottom)
-                    
-                    BoardView(viewModel: viewModel)
-                        .padding(.bottom)
+                
+                ResultView(viewModel: viewModel)
+                
+                Spacer()
+                
+                HStack(spacing: 25){
+                    ZStack{
+                        Color.white
+                            .frame(width: 80, height: 80)
+                            .cornerRadius(10)
                         
-                    ResultView(viewModel: viewModel)
-                    
-                    Spacer()
-                    
-                    HStack(spacing: 25){
-                        ZStack{
-                            Color.white
-                                .frame(width: 80, height: 80)
-                                .cornerRadius(10)
+                        VStack(spacing: 12){
+                            Image(systemName: "arrow.uturn.forward")
+                                .font(.title)
                             
-                            VStack{
-                                Image(systemName: "arrow.uturn.forward")
-                                    .font(.title)
-                                Text("Restart")
-                            }
-                        }
-                        
-                        ZStack{
-                            Color.white
-                                .frame(width: 80, height: 80)
-                                .cornerRadius(10)
-                            
-                            VStack{
-                                Image(systemName: "xmark.bin")
-                                    .font(.title)
-                                Text("Clear")
-                            }
+                            Text("Restart")
                         }
                     }
-                    .padding(.bottom)
+                    
+                    ZStack{
+                        Color.white
+                            .frame(width: 80, height: 80)
+                            .cornerRadius(10)
+                        
+                        VStack(spacing: 12){
+                            Image(systemName: "xmark.bin")
+                                .font(.title)
+                            Text("Clear")
+                        }
+                    }
                 }
+                .padding(.bottom)
             }
         }
     }
 }
+
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView()
     }
 }
+
 
 

@@ -14,6 +14,8 @@ final class GameViewModel : ObservableObject{
     @Published var isGameOver = false
     @Published var isBoardFull = false
     @Published var movements = 0
+    @Published var showAlert = false
+    @Published var alertType : AlertType?
     
     init() {
         for _ in 0..<UIBoard.rows {
@@ -27,11 +29,15 @@ final class GameViewModel : ObservableObject{
             
             if checkWinCondition(column: column, row: row) {
                 isGameOver = true
+                alertType = .win
+                showAlert = true
             }else {
                 if !checkBoardFull() {
                     nextTurn()
                 }else{
                     isBoardFull = true
+                    alertType = .outOfSpace
+                    showAlert = true
                 }
             }
         }
@@ -75,7 +81,7 @@ final class GameViewModel : ObservableObject{
     private func checkDiagonalWin(column: Int, row: Int) -> Bool {
         
         var streak = 0
-
+        
         if(column + 4 <= UIBoard.columns && row - 4 >= 0) {
             //up-right diagonal
             for index in 0...3 {
@@ -157,5 +163,24 @@ final class GameViewModel : ObservableObject{
     
     func isColumnFull(column: Int) -> Bool {
         return board[0][column].player == nil
+    }
+    
+    func restart() {
+        board.removeAll()
+        
+        for _ in 0..<UIBoard.rows {
+            board.append(Array(repeating: Tile(player: nil), count: UIBoard.columns))
+        }
+        
+        isGameOver = false
+        isBoardFull = false
+        movements = 0
+        alertType = nil
+        currentPlayer.color = .red
+    }
+    
+    func clear() {
+        restart()
+        //reset wins
     }
 }

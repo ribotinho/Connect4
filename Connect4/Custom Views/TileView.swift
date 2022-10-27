@@ -25,14 +25,14 @@ struct TileView: View {
         
         if let player = tile.player {
             if player.color == .red {
-                Color.blue
+                Color(UIColor.systemBlue)
                     .frame(width: rect.width, height: rect.height)
                     .overlay {
                         Image("red_tile")
                             .resizable()
                     }
             }else{
-                Color.blue
+                Color(UIColor.systemBlue)
                     .frame(width: rect.width, height: rect.height)
                     .overlay {
                         Image("yellow_tile")
@@ -42,7 +42,7 @@ struct TileView: View {
             
         }else{
             Rectangle()
-                .fill(Color.blue)
+                .fill(Color(UIColor.systemBlue))
                 .frame(width: rect.width, height: rect.height)
                 .mask(HoleShapeMask(in: rect).fill(style: FillStyle(eoFill: true)))
         }

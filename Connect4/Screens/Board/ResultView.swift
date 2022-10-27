@@ -12,24 +12,37 @@ struct ResultView: View {
     @ObservedObject var viewModel : GameViewModel
     
     var body: some View {
-        HStack{
-            VStack (spacing: 5) {
-                
-                Image("red_tile")
-                    .resizable()
-                    .frame(width:50, height: 50)
-                Text("Player 1")
-            }
+        
+        ZStack {
             
-            Text("0 - 0")
-
-            VStack (spacing: 5) {
+            Color.white
+                .cornerRadius(10)
+                .frame(height: 50)
+                .padding(.horizontal, 20)
+            
+            HStack{
+                HStack (spacing: 5) {
+                    
+                    Image("red_tile")
+                        .resizable()
+                        .frame(width:25, height: 25)
+                    Text("Player 1")
+                }
+                Spacer()
                 
-                Image("yellow_tile")
-                    .resizable()
-                    .frame(width:50, height: 50)
-                Text("Player 2")
+                Text("0 - 0")
+                
+                Spacer()
+                
+                HStack (spacing: 5) {
+                    
+                    Image("yellow_tile")
+                        .resizable()
+                        .frame(width:25, height: 25)
+                    Text("Player 2")
+                }
             }
+            .padding(.horizontal, 25)
         }
     }
 }

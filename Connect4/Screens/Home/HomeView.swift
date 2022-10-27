@@ -9,16 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        ZStack {
-            
-            Color.blue.opacity(0.1)
+        
+        ZStack{
+            Color(UIColor.secondarySystemBackground)
                 .edgesIgnoringSafeArea(.all)
             
-            
             GameView()
-  
         }
-        
     }
 }
 

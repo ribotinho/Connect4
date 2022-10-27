@@ -24,9 +24,46 @@ struct GameView: View {
             }else {
                 
                 VStack {
+                    
+                    Image("logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150, height: 150)
+                        .padding(.bottom)
+                    
                     BoardView(viewModel: viewModel)
                         .padding(.bottom)
+                        
                     ResultView(viewModel: viewModel)
+                    
+                    Spacer()
+                    
+                    HStack(spacing: 25){
+                        ZStack{
+                            Color.white
+                                .frame(width: 80, height: 80)
+                                .cornerRadius(10)
+                            
+                            VStack{
+                                Image(systemName: "arrow.uturn.forward")
+                                    .font(.title)
+                                Text("Restart")
+                            }
+                        }
+                        
+                        ZStack{
+                            Color.white
+                                .frame(width: 80, height: 80)
+                                .cornerRadius(10)
+                            
+                            VStack{
+                                Image(systemName: "xmark.bin")
+                                    .font(.title)
+                                Text("Clear")
+                            }
+                        }
+                    }
+                    .padding(.bottom)
                 }
             }
         }

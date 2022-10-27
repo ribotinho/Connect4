@@ -15,5 +15,6 @@ struct UI {
 struct UIBoard {
     static let columns = 7
     static let rows = 6
+    static let maxTiles = 42
 }
 

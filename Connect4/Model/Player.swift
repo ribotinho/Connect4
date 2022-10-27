@@ -9,7 +9,7 @@ import Foundation
 
 struct Player : Equatable {
     var color : PlayerColor
-    var movements = 0
+    var wins = 0
 }
 
 enum PlayerColor {

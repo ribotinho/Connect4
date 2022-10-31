@@ -5,6 +5,7 @@ Candidate for the @MoureDev and @Rviewer [Challenge](https://github.com/mouredev
 # Screenshots
 
 [![Connect-4.jpg](https://i.postimg.cc/05fY19vD/Connect-4.jpg)](https://postimg.cc/nMXjvbCh)
+[![Gameplay.gif](https://i.postimg.cc/x8y6NZc7/Gameplay.gif)](https://postimg.cc/dZ32z4Rm)
 
 # Requirements
 

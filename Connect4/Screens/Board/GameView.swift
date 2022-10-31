@@ -49,6 +49,9 @@ struct GameView: View {
                             
                             Text("Restart")
                         }
+                        .onTapGesture {
+                            viewModel.restart()
+                        }
                     }
                     
                     ZStack{

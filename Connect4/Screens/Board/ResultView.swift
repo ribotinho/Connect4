@@ -10,6 +10,8 @@ import SwiftUI
 struct ResultView: View {
     
     @ObservedObject var viewModel : GameViewModel
+    private let imageSize : CGFloat = 50
+    @State private var turnBarOffset : Double = -130
     
     var body: some View {
         
@@ -17,32 +19,40 @@ struct ResultView: View {
             
             Color.white
                 .cornerRadius(10)
-                .frame(height: 50)
+                .frame(height: 75)
                 .padding(.horizontal, 20)
             
-            HStack{
-                HStack (spacing: 5) {
-                    
+            VStack(spacing: 5){
+                HStack(alignment: .center){
                     Image("red_tile")
                         .resizable()
-                        .frame(width:25, height: 25)
-                    Text("Player 1")
-                }
-                Spacer()
-                
-                Text("0 - 0")
-                
-                Spacer()
-                
-                HStack (spacing: 5) {
+                        .frame(width:imageSize, height: imageSize)
+                        .frame(maxWidth: .infinity)
+                    
+                    Text("0 : 0")
+                        .bold()
+                        .font(.system(size: 40))
+                        .frame(maxWidth: .infinity)
                     
                     Image("yellow_tile")
                         .resizable()
-                        .frame(width:25, height: 25)
-                    Text("Player 2")
+                        .frame(width:imageSize, height: imageSize)
+                        .frame(maxWidth: .infinity)
+                }
+                
+                Color.blue
+                    .frame(width:75, height:5)
+                    .cornerRadius(32)
+                    .offset(x: turnBarOffset)
+            }
+            .onChange(of: viewModel.currentPlayer.color) { value in
+                switch value {
+                case .red:
+                    withAnimation() { turnBarOffset = -130 }
+                case .yellow:
+                    withAnimation() { turnBarOffset = 135 }
                 }
             }
-            .padding(.horizontal, 25)
         }
     }
 }

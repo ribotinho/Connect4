@@ -30,7 +30,7 @@ struct AlertView: View {
     var description : String  {
         switch viewModel.alertType {
         case .win:
-            return "Congrautalations \(viewModel.players.current.color) player.\n\nYou've won this time!"
+            return "Congratulations \(viewModel.players.current.color) player.\n\nYou've won this time!"
         case .outOfSpace:
             return "You ran out of space, better luck next time!"
         case .none:
@@ -45,7 +45,7 @@ struct AlertView: View {
                 .cornerRadius(15)
             
             VStack{
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                     Text(title)
                         .foregroundColor(Color(uiColor: .systemBlue))
                         .padding(.bottom)

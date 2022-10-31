@@ -37,39 +37,7 @@ struct GameView: View {
                 
                 Spacer()
                 
-                HStack(spacing: 25){
-                    ZStack{
-                        Color.white
-                            .frame(width: 80, height: 80)
-                            .cornerRadius(10)
-                        
-                        VStack(spacing: 12){
-                            Image(systemName: "arrow.uturn.forward")
-                                .font(.title)
-                            
-                            Text("Restart")
-                        }
-                        .onTapGesture {
-                            viewModel.restart()
-                        }
-                    }
-                    
-                    ZStack{
-                        Color.white
-                            .frame(width: 80, height: 80)
-                            .cornerRadius(10)
-                        
-                        VStack(spacing: 12){
-                            Image(systemName: "xmark.bin")
-                                .font(.title)
-                            Text("Clear")
-                        }
-                        .onTapGesture {
-                            viewModel.clear()
-                        }
-                    }
-                }
-                .padding(.bottom)
+                ButtonView(viewModel: viewModel)
             }
         }
     }

@@ -30,9 +30,9 @@ struct AlertView: View {
     var description : String  {
         switch viewModel.alertType {
         case .win:
-            return "Congrautalations player \(viewModel.currentPlayer.color).\nYou've won this time!"
+            return "Congrautalations \(viewModel.players.current.color) player.\n\nYou've won this time!"
         case .outOfSpace:
-            return "You run out of space, better luck next time!"
+            return "You ran out of space, better luck next time!"
         case .none:
             return ""
         }
@@ -69,7 +69,7 @@ struct AlertView: View {
                     
                     Button {
                         viewModel.showAlert = false
-                        viewModel.restart()
+                        viewModel.clear()
                     } label: {
                         Text("Play Again")
                             .frame(width: buttonWidth, height: 30)

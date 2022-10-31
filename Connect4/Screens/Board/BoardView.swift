@@ -16,7 +16,7 @@ struct BoardView : View {
     var body: some View {
         ZStack (alignment: .leading){
             
-            ChipView(color: viewModel.currentPlayer.color == .red ? Color.red : Color.yellow)
+            ChipView(color: viewModel.players.current.color == .red ? Color.red : Color.yellow)
                 .zIndex(0)
                 .offset(x: xOffset, y: yOffset)
                 .opacity(isChipHidden ? 0 : 1)

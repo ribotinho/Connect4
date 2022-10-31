@@ -64,6 +64,9 @@ struct GameView: View {
                                 .font(.title)
                             Text("Clear")
                         }
+                        .onTapGesture {
+                            viewModel.clear()
+                        }
                     }
                 }
                 .padding(.bottom)

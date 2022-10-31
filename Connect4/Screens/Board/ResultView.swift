@@ -29,7 +29,7 @@ struct ResultView: View {
                         .frame(width:imageSize, height: imageSize)
                         .frame(maxWidth: .infinity)
                     
-                    Text("0 : 0")
+                    Text("\(viewModel.players.redPlayer.wins) : \(viewModel.players.yellowPlayer.wins)")
                         .bold()
                         .font(.system(size: 40))
                         .frame(maxWidth: .infinity)
@@ -45,7 +45,7 @@ struct ResultView: View {
                     .cornerRadius(32)
                     .offset(x: turnBarOffset)
             }
-            .onChange(of: viewModel.currentPlayer.color) { value in
+            .onChange(of: viewModel.players.current.color) { value in
                 switch value {
                 case .red:
                     withAnimation() { turnBarOffset = -130 }
